@@ -6,22 +6,31 @@ from langgraph.graph.message import add_messages
 
 from langchain_core.messages import BaseMessage
 
+from shared.models import (
+    Task,
+    Plan,
+    CodeArtifact,
+    Review,
+)
+from shared.enums import AgentType
+
 
 class AgentState(TypedDict):
+    """
+    Shared state exchanged between all agents.
+    """
 
-    user_request: str
+    task: Task
 
-    current_agent: str
+    plan: Plan
 
-    next_agent: str
+    code: CodeArtifact
 
-    plan: str
+    review: Review
 
-    code: str
+    current_agent: AgentType
 
-    review: str
-
-    final_answer: str
+    next_agent: AgentType
 
     messages: Annotated[
         list[BaseMessage],
