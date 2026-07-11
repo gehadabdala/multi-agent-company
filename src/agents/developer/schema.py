@@ -1,7 +1,5 @@
-from pydantic import BaseModel
-
-from shared.enums import AgentType
+from pydantic import BaseModel, Field
 
 
-class SupervisorDecision(BaseModel):
-    next_agent: AgentType
+class DeveloperResponse(BaseModel):
+    code: str = Field(description="Generated source code.")
